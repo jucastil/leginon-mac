@@ -1,0 +1,312 @@
+Registration Key confirmed.
+#===================================================
+Run the following Command:
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y update yum*
+--- Run Command Error ---
+Warning: RPMDB altered outside of yum.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install yum-fastestmirror.noarch yum-utils.noarch
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y update
+#===================================================
+
+yum update finished..
+#===================================================
+Run the following Command:
+yum -y install git
+#===================================================
+
+#===================================================
+Run the following Command:
+git clone http://emg.nysbc.org/git/myami /tmp/myami/
+#===================================================
+
+--- Start install Job Server
+#===================================================
+Run the following Command:
+yum -y install torque-server torque-scheduler
+#===================================================
+
+
+Warning: /var/lib/torque/server_priv/nodes not found.
+
+--- Start install Processing Server
+#===================================================
+Run the following Command:
+yum -y install ImageMagick MySQL-python compat-gcc-34-g77 fftw3-devel gcc-c++ gcc-gfortran gcc-objc gnuplot grace gsl-devel libtiff-devel netpbm-progs numpy openmpi-devel opencv-python python-devel python-imaging python-matplotlib python-tools scipy wxPython xorg-x11-server-Xvfb libjpeg-devel zlib-devel
+--- Run Command Error ---
+http://centos.mirror.net-d-sign.de/7.8.2003/os/x86_64/Packages/urw-base35-p052-fonts-20170801-10.el7.noarch.rpm: [Errno 12] Timeout on http://centos.mirror.net-d-sign.de/7.8.2003/os/x86_64/Packages/urw-base35-p052-fonts-20170801-10.el7.noarch.rpm: (28, 'Operation too slow. Less than 1000 bytes/sec transferred the last 30 seconds')
+Trying other mirror.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+which mpirun
+--- Run Command Error ---
+which: no mpirun in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin)
+
+#===================================================
+
+#===================================================
+Run the following Command:
+locate mpirun
+--- Run Command Error ---
+/bin/sh: locate: command not found
+
+#===================================================
+
+Failed to enable mpirun: link source not found
+#===================================================
+Run the following Command:
+yum install -y python-pip
+#===================================================
+
+#===================================================
+Run the following Command:
+pip install joblib==0.10.3
+--- Run Command Error ---
+You are using pip version 8.1.2, however version 20.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+./pysetup.sh install
+#===================================================
+
+#===================================================
+Run the following Command:
+python -c "import sys;print sys.prefix"
+#===================================================
+
+#===================================================
+Run the following Command:
+python setup.py install --install-scripts=/usr/bin/appion
+#===================================================
+
+setup Leginon configuration file
+create leginon configuration folder - /etc/myami
+setup Sinedon configuration file
+#===================================================
+Run the following Command:
+python -c "import sinedon; print sinedon.__path__[0]"
+--- Run Command Error ---
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python2.7/site-packages/sinedon/__init__.py", line 23, in <module>
+    from data import Data
+  File "/usr/lib/python2.7/site-packages/sinedon/data.py", line 12, in <module>
+    import dbdatakeeper
+  File "/usr/lib/python2.7/site-packages/sinedon/dbdatakeeper.py", line 10, in <module>
+    import sqldict
+  File "/usr/lib/python2.7/site-packages/sinedon/sqldict.py", line 151, in <module>
+    import sqlexpr
+  File "/usr/lib/python2.7/site-packages/sinedon/sqlexpr.py", line 59, in <module>
+    import dbconfig
+  File "/usr/lib/python2.7/site-packages/sinedon/dbconfig.py", line 15, in <module>
+    pyami.fileutil.check_exist_one_file(config_locations)
+  File "/usr/lib/python2.7/site-packages/pyami/fileutil.py", line 102, in check_exist_one_file
+    raise IOError(msg)
+IOError: please configure at least one of these:  ['/etc/myami/sinedon.cfg', '/usr/lib/python2.7/site-packages/sinedon/sinedon.cfg', '/root/sinedon.cfg']
+
+#===================================================
+
+setup .appion.cfg configuration file
+#===================================================
+Run the following Command:
+python -c "import pyscope; print pyscope.__path__[0]"
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install torque-mom torque-client
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s s scheduling=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "c q batch queue_type=execution"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch started=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch enabled=true"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch resources_default.nodes=1"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s q batch resources_default.walltime=3600"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+#===================================================
+Run the following Command:
+qmgr -c "s s default_queue=batch"
+--- Run Command Error ---
+socket_connect_unix failed: 15137
+qmgr: cannot connect to server  (errno=15137) could not connect to trqauthd
+
+#===================================================
+
+--- Start install Database Server
+#===================================================
+Run the following Command:
+rpm -Uvh http://repo.mysql.com/mysql57-community-release-el7.rpm
+--- Run Command Error ---
+warning: /var/tmp/rpm-tmp.YTVnR1: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
+
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install mysql-server php php-mysql
+#===================================================
+
+#===================================================
+Run the following Command:
+php /tmp/myami/install/newDBsetup.php -L leginondb -P projectdb -H localhost -U root -E Juan.Castillo@biophys.mpg.de
+--- Run Command Error ---
+PHP Notice:  Undefined index: S in /tmp/myami/install/newDBsetup.php on line 51
+PHP Notice:  Undefined index: S in /tmp/myami/install/newDBsetup.php on line 55
+PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /tmp/myami/install/newDBsetup.php:128
+Stack trace:
+#0 {main}
+  thrown in /tmp/myami/install/newDBsetup.php on line 128
+
+#===================================================
+
+#===================================================
+Run the following Command:
+/sbin/iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+--- Run Command Error ---
+iptables v1.4.21: can't initialize iptables table `filter': Permission denied (you must be root)
+Perhaps iptables or your kernel needs to be upgraded.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+/sbin/iptables-save > /etc/sysconfig/iptables
+#===================================================
+
+firewall port 3306 opened
+--- Start install Web Server
+#===================================================
+Run the following Command:
+yum -y install php-pecl-ssh2 mod_ssl fftw3-devel git python-imaging python-devel mod_python scipy httpd libssh2-devel php php-mysql phpMyAdmin.noarch php-devel php-gd
+--- Run Command Error ---
+Warning: RPMDB altered outside of yum.
+
+#===================================================
+
+#===================================================
+Run the following Command:
+easy_install fs PyFFTW3
+--- Run Command Error ---
+error: Setup script exited with error in fs setup command: Invalid environment marker: python_version < '3.4'
+
+#===================================================
+
+#===================================================
+Run the following Command:
+yum -y install fftw-devel numpy python-devel python-imaging scipy
+#===================================================
+
+#===================================================
+Run the following Command:
+wget -c https://pypi.python.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz
+--- Run Command Error ---
+--2020-05-20 17:05:39--  https://pypi.python.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz
+Resolving pypi.python.org (pypi.python.org)... 151.101.112.223, 2a04:4e42:1b::223
+Connecting to pypi.python.org (pypi.python.org)|151.101.112.223|:443... connected.
+HTTP request sent, awaiting response... 301 Redirect to Primary Domain
+Location: https://pypi.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz [following]
+--2020-05-20 17:05:39--  https://pypi.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz
+Resolving pypi.org (pypi.org)... 151.101.192.223, 151.101.0.223, 151.101.128.223, ...
+Connecting to pypi.org (pypi.org)|151.101.192.223|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://files.pythonhosted.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz [following]
+--2020-05-20 17:05:39--  https://files.pythonhosted.org/packages/08/c3/9a6e3c7bd2755e3383c84388c1e01113bddafa8008a0aa4af64996ab4470/fs-0.4.0.tar.gz
+Resolving files.pythonhosted.org (files.pythonhosted.org)... 151.101.113.63, 2a04:4e42:1b::319
+Connecting to files.pythonhosted.org (files.pythonhosted.org)|151.101.113.63|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 191749 (187K) [application/octet-stream]
+Saving to: 'fs-0.4.0.tar.gz'
+
+     0K .......... .......... .......... .......... .......... 26% 2.06M 0s
+    50K .......... .......... .......... .......... .......... 53% 3.23M 0s
+   100K .......... .......... .......... .......... .......... 80% 2.49M 0s
+   150K .......... .......... .......... .......              100% 1.99M=0.08s
+
+2020-05-20 17:05:39 (2.39 MB/s) - 'fs-0.4.0.tar.gz' saved [191749/191749]
+
+
+#===================================================
+
+#===================================================
+Run the following Command:
+tar -zxvf fs-0.4.0.tar.gz
+#===================================================
+
+#===================================================
+Run the following Command:
+python setup.py install
+#===================================================
+
+#===================================================
+Run the following Command:
+cp -rf /tmp/myami/myamiweb /var/www/html
+#===================================================
+
+Installation Complete.

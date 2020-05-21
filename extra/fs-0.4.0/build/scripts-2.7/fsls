@@ -1,0 +1,3 @@
+#!/usr/bin/python
+from fs.commands.fsls import run
+run()

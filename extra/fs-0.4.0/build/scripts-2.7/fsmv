@@ -1,0 +1,3 @@
+#!/usr/bin/python
+from fs.commands.fsmv import run
+run()
