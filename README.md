@@ -25,17 +25,7 @@ For example: ``./start-leginon.sh leginon leginon 127.0.0.1``
 ## Configuration of myamiweb    
 - Configuration is done with the files inside the **/extra** folder. Check that you can ``ls /extra`` from inside the docker.
 -  Attach your shell to your container by running: ``docker exec -i -t dockername /bin/bash``
-- cd to **/extra** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. Follow the instructions. The installation **needs your imput**. 
-
-#### What ``./extra-config.sh`` does, in this order   
-  * Setup all the root **PASSWORDS**. 
-  * Copy __config.inc.php.phpMyAdmin.docker__ to protect the phpmyadmin web interface
-  * Copy __my.cnf.docker__ to setup the right cache limits 
-  * Install missing packages via yum  
-  * Run the php script __leginon-db-config.php__ to setup the database (it can fail)
-  * Run the  __centos7AutoInstallation.py__, a wrap over the official[Autoinstaller CentOS](http://emg.nysbc.org/redmine/projects/leginon/wiki/Autoinstaller_for_CentOS) available on the [Complete Install](http://emg.nysbc.org/redmine/projects/leginon/wiki/Complete_Installation) page.
-  * My answers the questions GroEL and EMAN, Xmipp, Spider and Protomo is **N**  
-  * Copy __config.php.myamiweb.docker__ to initialize myamiweb (it will be configured later)
+- cd to **/extra** and run ``./centos7AutoInstallation.py``. Before running it, **you need to have a registration key**. Follow the instructions. The installation **needs your imput** at the beginning. After that it takes a little to be done (~ 10 minutes) 
 
 ### You should have by now a fully functional Leginon docker.
 
@@ -47,16 +37,3 @@ If you want to do that, simply edit **start-leginon.sh** and start a new instanc
 NOTE that this is visible only in the same subnet. NOTE that not all the options were tested.
 - Users and password are usually the main source of issues at installation time, if you ask me. Please be careful :-) 
 
-## Configuration of myamiweb    
-- Configuration is done with the files inside the **/extra** folder, as in CentOS 7.
-- Ssh to your container, cd to **extra** and run ``./extra-config.sh``. Before running it, **you need to have a registration key**. Follow the instructions.  The installation **needs your imput**. Since we are running inside the docker, the script does the same than for the CentOS 7 install. Please refer to that explanation if you have doubts. 
-
-### You should have by now a fully functional Leginon docker.
-
-## IMPORTANT remarks
-
-- There is **no data share** mapped inside the container.  
-If you want to do that, simply edit **start-sbleginon.sh** and start a new instance.
-- Once these scripts are done, one needs to run the Web Tools Setup, by opening [https://DOCKER-IP/myamiweb/setup](https://DOCKER-IP/myamiweb/setup).  
-NOTE that this is visible only in the same subnet. NOTE that not all the options were tested.
-- Users and password are usually the main source of issues at installation time, if you ask me. Please be careful :-) 
