@@ -25,7 +25,12 @@ For example: ``./start-leginon.sh leginon leginon 127.0.0.1``
 ## Configuration of myamiweb    
 - Configuration is done with the files inside the **/extra** folder. Check that you can ``ls /extra`` from inside the docker.
 -  Attach your shell to your container by running: ``docker exec -i -t dockername /bin/bash``
-- cd to **/extra** and run ``./centos7AutoInstallation.py``. Before running it, **you need to have a registration key**. Follow the instructions. The installation **needs your imput** at the beginning. After that it takes a little to be done (~ 10 minutes) 
+- cd to **/extra** and run ``./centos7AutoInstallation.py``. Before running it, **you need to have a registration key**. Follow the instructions. The installation **needs your imput** at the beginning. After that it takes a little to be done. 
+On my macbook 2018 it took :
+
+   Total wall clock time: 21m 39s
+   
+   Downloaded: 8 files, 512M in 21m 32s (406 KB/s)
 
 ### You should have by now a fully functional Leginon docker.
 
